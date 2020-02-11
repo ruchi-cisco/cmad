@@ -6,7 +6,8 @@ pipeline {
     stages{
         stage("build"){
 			steps{
-				echo 'Compiling users service' dir('java/cmad-ms-users'){
+				echo 'Compiling users service'
+				 dir('java/cmad-ms-users'){
 				sh 'mvn compile'
 			 }
 			} 
@@ -19,7 +20,8 @@ pipeline {
 		}
 		  stage("package"){
             steps{
-				echo 'Packaging users service' dir('java/cmad-ms-users'){
+				echo 'Packaging users service' 
+				dir('java/cmad-ms-users'){
 				 sh 'mvn package'
 				}
 			} }
