@@ -1,5 +1,5 @@
 0. Build the application
-1. Setup MongoDB server and update the application.properties accordingly, if needed
+1. Setup MongoDB server and update the application.properties accordingly, if needed.
 
 2. Start the application
 java -jar cmad-user-service.jar
