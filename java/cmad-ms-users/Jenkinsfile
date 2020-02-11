@@ -14,7 +14,7 @@ pipeline {
 		}
         stage("test"){
             steps{
-				echo 'Running Unit Tets on users service..' 
+				echo 'Running Unit Tets on users service..'
 				sh 'mvn -f java/cmad-ms-users/pom.xml clean test'
 			}
 		}
