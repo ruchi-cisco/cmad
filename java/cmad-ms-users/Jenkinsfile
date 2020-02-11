@@ -5,9 +5,9 @@ pipeline {
 	}
     stages{
         stage("build"){
-	        when { 
-	        	changeset "java/cmad-ms-users/*”
-	        }
+	       when {
+            changeset "java/cmad-ms-users/*"
+        }
 			steps{
 				echo 'Compiling users service'
 				 dir('java/cmad-ms-users'){
@@ -16,6 +16,9 @@ pipeline {
 			} 
 		}
         stage("test"){
+        when {
+            changeset "java/cmad-ms-users/*"
+        }
             steps{
 				echo 'Running Unit Tets on users service..'
 				sh 'mvn -f java/cmad-ms-users/pom.xml clean test'
@@ -23,6 +26,7 @@ pipeline {
 		}
 		  stage("package"){
 		  when { 
+		  	changeset "java/cmad-ms-users/*"
 		  	branch 'master'
 		  }
             steps{
