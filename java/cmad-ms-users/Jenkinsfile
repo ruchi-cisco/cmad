@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+	tools{
+	maven 'Maven 3.6.1'
+	}
+    stages{
+        stage("build"){
+			steps{
+				echo 'Compiling users service' dir('java/cmad-ms-users'){
+				sh 'mvn compile'
+			 }
+			} 
+		}
+        stage("test"){
+            steps{
+				echo 'Running Unit Tets on users service..' 
+				sh 'mvn -f java/cmad-ms-users/pom.xml clean test'
+			}
+		}
+		  stage("package"){
+            steps{
+				echo 'Packaging users service' dir('java/cmad-ms-users'){
+				 sh 'mvn package'
+				}
+			} }
+		}
+	post{
+		always{
+		echo 'Building multibranch pipeline for users is completed..' }
+	} 
+}
